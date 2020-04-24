@@ -14,7 +14,7 @@
 <meta property="og:description" content="Detectron2 是Facebook开源的目标检测和实例分割库，可以轻易的利用它来开发自己的目标检测或实例分割算法。 现在利用它来开发一个检测熊猫的实例分割算法，代码链接。 1.构建一个熊猫数据集（Pandaset） 安装youtube-dl库，下载15个熊猫视频。 从15个视频中选取12个作为训练集，2个作为验证集，1个作为测试集。将训练集和验证集视频各截取10张照片工140张照片用于标注。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-24T07:18:48.000Z">
-<meta property="article:modified_time" content="2020-04-24T07:40:47.819Z">
+<meta property="article:modified_time" content="2020-04-24T07:41:55.661Z">
 <meta property="article:author" content="han">
 <meta name="twitter:card" content="summary">
     
@@ -148,7 +148,9 @@
 <li>安装youtube-dl库，下载15个熊猫视频。</li>
 <li>从15个视频中选取12个作为训练集，2个作为验证集，1个作为测试集。将训练集和验证集视频各截取10张照片工140张照片用于标注。</li>
 <li>下载VIA标注工具，标注140张照片。</li>
-<li>将VIA输出的标注文件转换为COCO格式。<h1 id="2-训练Mask-RCNN模型"><a href="#2-训练Mask-RCNN模型" class="headerlink" title="2.训练Mask RCNN模型"></a>2.训练Mask RCNN模型</h1></li>
+<li>将VIA输出的标注文件转换为COCO格式。</li>
+</ul>
+<h1 id="2-训练Mask-RCNN模型"><a href="#2-训练Mask-RCNN模型" class="headerlink" title="2.训练Mask RCNN模型"></a>2.训练Mask RCNN模型</h1><ul>
 <li><a href="https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md" target="_blank" rel="noopener">安装detectron2</a></li>
 <li>导入模型配置文件（COCO-InstanceSegmentation/mask_rcnn_R_50_C4_1x.yaml）</li>
 <li>“注册”标注的Pandaset</li>

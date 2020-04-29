@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="通用解法定义状态dp[i][k][c] -&gt; i：天数， k：最大交易次数， c：持有股票状态（0不持有，1持有）  示例1： dp[6][2][0]： 第6天最多交易了2次，手中不持有股票（0）, 此时最大的收益 示例2： dp[23][3][1]: 第23天最多交易了3次，手中持有股票（1），此时最大的收益 最终状态： dp[n][1][0], 第n天最多进行了1此交易，手中不持有股票状">
+    <meta name="description" content="通用解法定义状态dp[i][k][c] -&gt; i：天数， k：最大交易次数， c：持有股票状态（0不持有，1持有） 示例1： dp[6][2][0]： 第6天最多交易了2次，手中不持有股票（0）, 此时最大的收益 示例2： dp[23][3][1]: 第23天最多交易了3次，手中持有股票（1），此时最大的收益 最终状态： dp[n][1][0], 第n天最多进行了1此交易，手中不持有股票状态">
 <meta property="og:type" content="article">
 <meta property="og:title" content="买卖股票">
 <meta property="og:url" content="http://yoursite.com/2020/04/25/lc-stock-problems/index.html">
 <meta property="og:site_name" content="log(hans)">
-<meta property="og:description" content="通用解法定义状态dp[i][k][c] -&gt; i：天数， k：最大交易次数， c：持有股票状态（0不持有，1持有）  示例1： dp[6][2][0]： 第6天最多交易了2次，手中不持有股票（0）, 此时最大的收益 示例2： dp[23][3][1]: 第23天最多交易了3次，手中持有股票（1），此时最大的收益 最终状态： dp[n][1][0], 第n天最多进行了1此交易，手中不持有股票状">
+<meta property="og:description" content="通用解法定义状态dp[i][k][c] -&gt; i：天数， k：最大交易次数， c：持有股票状态（0不持有，1持有） 示例1： dp[6][2][0]： 第6天最多交易了2次，手中不持有股票（0）, 此时最大的收益 示例2： dp[23][3][1]: 第23天最多交易了3次，手中持有股票（1），此时最大的收益 最终状态： dp[n][1][0], 第n天最多进行了1此交易，手中不持有股票状态">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-25T14:47:54.000Z">
-<meta property="article:modified_time" content="2020-04-25T14:55:03.102Z">
+<meta property="article:modified_time" content="2020-04-28T15:49:19.120Z">
 <meta property="article:author" content="han">
 <meta name="twitter:card" content="summary">
     
@@ -144,13 +144,12 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="通用解法"><a href="#通用解法" class="headerlink" title="通用解法"></a>通用解法</h1><h2 id="定义状态"><a href="#定义状态" class="headerlink" title="定义状态"></a>定义状态</h2><p>dp[i][k][c] -&gt; i：天数， k：最大交易次数， c：持有股票状态（0不持有，1持有）</p>
-<ul>
+    <h1 id="通用解法"><a href="#通用解法" class="headerlink" title="通用解法"></a>通用解法</h1><h2 id="定义状态"><a href="#定义状态" class="headerlink" title="定义状态"></a>定义状态</h2><pre><code>dp[i][k][c] -&gt; i：天数， k：最大交易次数， c：持有股票状态（0不持有，1持有）</code></pre><ul>
 <li>示例1： dp[6][2][0]： 第6天最多交易了2次，手中不持有股票（0）, 此时最大的收益</li>
 <li>示例2： dp[23][3][1]: 第23天最多交易了3次，手中持有股票（1），此时最大的收益</li>
 <li>最终状态： dp[n][1][0], 第n天最多进行了1此交易，手中不持有股票<h2 id="状态转移方程"><a href="#状态转移方程" class="headerlink" title="状态转移方程"></a>状态转移方程</h2></li>
-<li>情形一（第i天不持有股票）:  dp[i][k][0]  =  max(dp[i-1][k][0], dp[i-1][k][1] + prices[i]) 分别为（第i-1天就未持有股票， 第i天卖掉了股票）</li>
-<li>情形二（第i天持有股票）:  dp[i][k][1]  =  max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i]) 分别为 (第i-1天就持有股票, 第i天买入股票)<h1 id="base-case"><a href="#base-case" class="headerlink" title="base case:"></a>base case:</h1></li>
+<li>情形一（第i天不持有股票）:<br>  dp[i][k][0]  =  max(dp[i-1][k][0], dp[i-1][k][1] + prices[i]) 分别为（第i-1天就未持有股票， 第i天卖掉了股票）</li>
+<li>情形二（第i天持有股票）:<br>  dp[i][k][1]  =  max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i]) 分别为 (第i-1天就持有股票, 第i天买入股票)<h1 id="base-case"><a href="#base-case" class="headerlink" title="base case:"></a>base case:</h1></li>
 <li>dp[-1][k][0] = 0              ,未开始，未持有股票，收益为0</li>
 <li>dp[-1][k][1] = - float(“inf”) ,未开始，不可能持有股票，初始化收益为负无穷大</li>
 <li>dp[i][0][0]  = 0              ,相当于不能交易，收益为0</li>
